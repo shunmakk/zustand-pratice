@@ -5,6 +5,14 @@
   text-align: center;
 }
 
+.countWrapper {
+  display: flex;
+  height: 70vh;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
 .logo {
   height: 6em;
   padding: 1.5em;
