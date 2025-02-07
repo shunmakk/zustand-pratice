@@ -1,5 +1,5 @@
 import "./common.css";
-import { useStore } from "../assets/zustand/Store";
+import { useStore } from "../zustand/Store";
 
 const RightCounter = () => {
   //storeからデータを受け取る

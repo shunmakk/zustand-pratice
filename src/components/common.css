@@ -14,8 +14,12 @@
 }
 
 .PlusButton {
-  font-size: 30px;
+  font-size: 20px;
   cursor: pointer;
+}
+
+.alertButton {
+  margin-top: 5px;
 }
 
 @media screen and (max-width: 768px) {
