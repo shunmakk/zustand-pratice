@@ -1,5 +1,6 @@
 import { create } from "zustand";
 import { immer } from "zustand/middleware/immer";
+import { persist } from "zustand/middleware";
 
 //型の定義
 type StoreStateType = {
@@ -25,20 +26,27 @@ type StoreStateType = {
 
 //storeの作成
 const useStore = create<StoreStateType>()(
-  immer((set, get) => ({
-    //初期値
-    happys: 0,
-    //状態の更新（set関数を使用）
-    happysUp: () =>
-      set((state) => {
-        //immerを使うとコードがより直感的にかける
-        state.happys++;
-      }),
-    //状態の読み取り
-    showhappys: () => {
-      alert(`Current happys:${get().happys}`);
-    },
-  }))
+  //persistを用いてページリロード後も状態を保持する
+  persist(
+    immer((set, get) => ({
+      //初期値
+      happys: 0,
+      //状態の更新（set関数を使用）
+      happysUp: () =>
+        set((state) => {
+          //immerを使うとコードがより直感的にかける
+          state.happys++;
+        }),
+      //状態の読み取り
+      showhappys: () => {
+        alert(`Current happys:${get().happys}`);
+      },
+    })),
+    //localStorageに保存される際のキー名
+    {
+      name: "happysStorage",
+    }
+  )
 );
 
 export { useStore };
